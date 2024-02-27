@@ -2,10 +2,10 @@
 
 namespace Kobalt\LaravelDuskBladeDirective\Tests;
 
-use Orchestra\Testbench\TestCase as Orchestra;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Kobalt\LaravelDuskBladeDirective\LaravelDuskBladeDirectiveServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
@@ -16,7 +16,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Kobalt\\LaravelDuskBladeDirective\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'Kobalt\\LaravelDuskBladeDirective\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 

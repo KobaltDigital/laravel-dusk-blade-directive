@@ -5,7 +5,6 @@ namespace Kobalt\LaravelDuskBladeDirective;
 use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Kobalt\LaravelDuskBladeDirective\Commands\LaravelDuskBladeDirectiveCommand;
 
 class LaravelDuskBladeDirectiveServiceProvider extends PackageServiceProvider
 {
@@ -26,9 +25,10 @@ class LaravelDuskBladeDirectiveServiceProvider extends PackageServiceProvider
         parent::boot();
 
         Blade::directive(config('dusk-blade-directive.name'), function ($expression) {
-            if (!app()->environment(config('dusk-blade-directive.environments'))) {
+            if (! app()->environment(config('dusk-blade-directive.environments'))) {
                 return '';
             }
+
             return "<?php printf('dusk=\"%s\"',  $expression); ?>";
         });
     }
